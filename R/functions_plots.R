@@ -30,7 +30,7 @@ plotMissingness <- function(d) {
   return(out)
 }
 
-# plot perceived fitness interdependence
+# plot perceived fitness interdependence over time
 plotPerceivedInterdependence <- function(d) {
   out <-
     d %>%
@@ -48,7 +48,8 @@ plotPerceivedInterdependence <- function(d) {
     group_by(item, wave) %>%
     summarise(
       mean = mean(value, na.rm = TRUE),
-      se = sd(value, na.rm = TRUE) / sqrt(n())
+      se = sd(value, na.rm = TRUE) / sqrt(n()),
+      .groups = "drop"
       ) %>%
     # names for plot
     mutate(item = ifelse(item == "PFIaffectNeigh",
@@ -63,5 +64,42 @@ plotPerceivedInterdependence <- function(d) {
     theme(panel.grid = element_blank())
   # save
   ggsave(filename = "figures/pfi.pdf", width = 7, height = 4)
+  return(out)
+}
+
+# plot help given / received over time
+plotHelping <- function(d) {
+  out <-
+    d %>%
+    # select pfi items
+    dplyr::select(starts_with("Help")) %>%
+    # get data in long format
+    pivot_longer(
+      cols = everything(),
+      names_pattern = "([^.]+).([^.]+)",
+      names_to = c("item","wave")
+    ) %>%
+    # wave as numeric
+    mutate(wave = as.numeric(wave)) %>%
+    # averages and standard errors
+    group_by(item, wave) %>%
+    summarise(
+      mean = mean(value, na.rm = TRUE),
+      se = sd(value, na.rm = TRUE) / sqrt(n()),
+      .groups = "drop"
+    ) %>%
+    # names for plot
+    mutate(item = ifelse(item == "HelpGiven",
+                         "Help Given",
+                         "Help Received")) %>%
+    # plot
+    ggplot(aes(x = wave, y = mean, ymin = mean - 2*se,
+               ymax = mean + 2*se, colour = item)) +
+    geom_pointrange(size = 0.2) +
+    scale_y_continuous(name = "average rating", limits = c(1, 5), breaks = 1:5) +
+    scale_x_continuous(breaks = 1:16, limits = c(1, 16)) +
+    theme(panel.grid = element_blank())
+  # save
+  ggsave(filename = "figures/help.pdf", width = 7, height = 4)
   return(out)
 }

@@ -15,6 +15,8 @@ list(
   tar_target(plotMissing, plotMissingness(d)),
   # plot average pfi over time
   tar_target(plotPFI, plotPerceivedInterdependence(d)),
+  # plot average help given/received over time
+  tar_target(plotHelp, plotHelping(d)),
   # print session info for reproducibility
   tar_target(sessionInfo, writeLines(capture.output(sessionInfo()), "sessionInfo.txt"))
 )
