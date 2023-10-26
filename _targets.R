@@ -3,6 +3,7 @@ library(targets)
 library(tarchetypes)
 source("R/functions_data.R")
 source("R/functions_plots.R")
+source("R/functions_modelling.R")
 options(tidyverse.quiet = TRUE)
 tar_option_set(packages = c("lavaan", "tidyverse"))
 # workflow
@@ -17,6 +18,8 @@ list(
   tar_target(plotPFI, plotPerceivedInterdependence(d)),
   # plot average help given/received over time
   tar_target(plotHelp, plotHelping(d)),
+  # fit random intercept cross-lagged panel model without controls
+  tar_target(riclpm, fitRICLPM(d, constrained = TRUE)),
   # print session info for reproducibility
   tar_target(sessionInfo, writeLines(capture.output(sessionInfo()), "sessionInfo.txt"))
 )

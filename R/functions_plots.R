@@ -24,7 +24,7 @@ plotMissingness <- function(d) {
     ggplot(aes(x = wave, y = item, fill = propObs)) +
     geom_tile() +
     scale_y_discrete(limits = rev) +
-    scale_x_continuous(breaks = 1:16, limits = c(0.5, 16.5))
+    scale_x_continuous(breaks = 1:18, limits = c(0.5, 18.5))
   # save
   ggsave(filename = "figures/missing.pdf", width = 7, height = 5)
   return(out)
@@ -60,7 +60,7 @@ plotPerceivedInterdependence <- function(d) {
                ymax = mean + 2*se, colour = item)) +
     geom_pointrange(size = 0.2) +
     scale_y_continuous(name = "average rating", limits = c(1, 7), breaks = 1:7) +
-    scale_x_continuous(breaks = 1:16) +
+    scale_x_continuous(breaks = 1:18) +
     theme(panel.grid = element_blank())
   # save
   ggsave(filename = "figures/pfi.pdf", width = 7, height = 4)
@@ -97,7 +97,7 @@ plotHelping <- function(d) {
                ymax = mean + 2*se, colour = item)) +
     geom_pointrange(size = 0.2) +
     scale_y_continuous(name = "average rating", limits = c(1, 5), breaks = 1:5) +
-    scale_x_continuous(breaks = 1:16, limits = c(1, 16)) +
+    scale_x_continuous(breaks = 1:18, limits = c(1, 18)) +
     theme(panel.grid = element_blank())
   # save
   ggsave(filename = "figures/help.pdf", width = 7, height = 4)
