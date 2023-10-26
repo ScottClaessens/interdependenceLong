@@ -1,0 +1,3 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+fileData|stem|db8ac5903ac363be|1e2565cee40dca55|ef46db3751d8e999|-1990176534|data/usCohortCleanData_t1-t18.csv|t19255.0440162037s|19c03fbd7cdfe9a8|10770912|file|local|vector|||0||
+sessionInfo|stem|794be3614d98cc38|74c06756c0452f1d|696eeb75af4c39be|-1689045739||t19656.07075566s|a1c456b03adbfbf8|44|rds|local|vector|||0.06||
