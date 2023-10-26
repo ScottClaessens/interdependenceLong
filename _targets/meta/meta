@@ -1,5 +1,7 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-d|stem|ced76f030bb255c5|657a3af1a9391cde|0162903bd185a10e|592496261||t19656.1120929645s|3b2ecb12fdea61c2|58295|rds|local|vector|||4.94||
+d|stem|ced76f030bb255c5|657a3af1a9391cde|7a45764b38e490fc|592496261||t19656.1294497107s|3b2ecb12fdea61c2|58295|rds|local|vector|||5.08||
 fileData|stem|db8ac5903ac363be|1e2565cee40dca55|ef46db3751d8e999|-1990176534|data/usCohortCleanData_t1-t18.csv|t19255.0440162037s|19c03fbd7cdfe9a8|10770912|file|local|vector|||0||
-loadData|function|24d5a2fdffc907d3|||||||||||||||
+loadData|function|da6fddc31426571c|||||||||||||||
+plotMissing|stem|cfa8d4f1f6ff0724|3d81c52d5242f976|917a5e815515e085|-20879220||t19656.1302241098s|a2b7e78474bf2fa9|137522|rds|local|vector|||0.36||
+plotMissingness|function|7d1d894b760969d8|||||||||||||||
 sessionInfo|stem|794be3614d98cc38|74c06756c0452f1d|696eeb75af4c39be|-1689045739||t19656.07075566s|a1c456b03adbfbf8|44|rds|local|vector|||0.06||

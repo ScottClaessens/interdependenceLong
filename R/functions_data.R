@@ -2,8 +2,9 @@
 
 # load and clean data
 loadData <- function(fileData) {
-  # read in data from cleaned csv file
-  suppressMessages(read_csv(file = fileData, show_col_types = FALSE)) %>%
+  out <-
+    # read in data from cleaned csv file
+    suppressMessages(read_csv(file = fileData, show_col_types = FALSE)) %>%
     # select relevant variables
     dplyr::select(
       # PFI neighbourhood - affect
@@ -23,4 +24,5 @@ loadData <- function(fileData) {
         # wealth
         starts_with("Wealth.")
       )
+  return(out)
 }
