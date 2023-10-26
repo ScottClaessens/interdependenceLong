@@ -4,4 +4,6 @@ fileData|stem|db8ac5903ac363be|1e2565cee40dca55|ef46db3751d8e999|-1990176534|dat
 loadData|function|da6fddc31426571c|||||||||||||||
 plotMissing|stem|cfa8d4f1f6ff0724|3d81c52d5242f976|917a5e815515e085|-20879220||t19656.1302241098s|a2b7e78474bf2fa9|137522|rds|local|vector|||0.36||
 plotMissingness|function|7d1d894b760969d8|||||||||||||||
+plotPerceivedInterdependence|function|68cb073a8b934d28|||||||||||||||
+plotPFI|stem|fb7475cbf58b6ac7|9c8a5bcf8b22d87f|22df1f929e8c6ecf|1601422046||t19656.1382785688s|3a0b92a7326848c2|131027|rds|local|vector|||0.47||
 sessionInfo|stem|794be3614d98cc38|74c06756c0452f1d|696eeb75af4c39be|-1689045739||t19656.07075566s|a1c456b03adbfbf8|44|rds|local|vector|||0.06||

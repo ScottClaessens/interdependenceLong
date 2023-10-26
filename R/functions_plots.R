@@ -29,3 +29,39 @@ plotMissingness <- function(d) {
   ggsave(filename = "figures/missing.pdf", width = 7, height = 5)
   return(out)
 }
+
+# plot perceived fitness interdependence
+plotPerceivedInterdependence <- function(d) {
+  out <-
+    d %>%
+    # select pfi items
+    dplyr::select(starts_with("PFI")) %>%
+    # get data in long format
+    pivot_longer(
+      cols = everything(),
+      names_pattern = "([^.]+).([^.]+)",
+      names_to = c("item","wave")
+    ) %>%
+    # wave as numeric
+    mutate(wave = as.numeric(wave)) %>%
+    # averages and standard errors
+    group_by(item, wave) %>%
+    summarise(
+      mean = mean(value, na.rm = TRUE),
+      se = sd(value, na.rm = TRUE) / sqrt(n())
+      ) %>%
+    # names for plot
+    mutate(item = ifelse(item == "PFIaffectNeigh",
+                         "PFI Affect",
+                         "PFI Shared Fate")) %>%
+    # plot
+    ggplot(aes(x = wave, y = mean, ymin = mean - 2*se,
+               ymax = mean + 2*se, colour = item)) +
+    geom_pointrange(size = 0.2) +
+    scale_y_continuous(name = "average rating", limits = c(1, 7), breaks = 1:7) +
+    scale_x_continuous(breaks = 1:16) +
+    theme(panel.grid = element_blank())
+  # save
+  ggsave(filename = "figures/pfi.pdf", width = 7, height = 4)
+  return(out)
+}
