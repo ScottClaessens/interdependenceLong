@@ -1,0 +1,116 @@
+---
+title: "Interdependence and Helping Behaviour: A Longitudinal Analysis"
+author: "Scott Claessens"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+This document reports the longitudinal analyses estimating the causal effect of
+perceived fitness interdependence on helping behaviour.
+
+# Sample
+
+We test the longitudinal relationship between perceived fitness interdependence
+and helping behaviour in a sample of `r nrow(tar_read(d))` participants from the
+United States, sampled over 18 time points between 2020 and 2022.
+
+# Variables
+
+The key outcome variable of interest is the amount of help given to others. This
+is a composite variable of six items measured on a 1-5 Likert scale at all time 
+points except time points 14, 16, and 17. The individual items are:
+
+- Giving money to someone you know who needs it (e.g., for rent, utilities, etc)
+- Providing food or water e.g., meals, groceries
+- Providing household supplies (e.g., medical, cleaning, etc)
+- Providing help to someone who was sick, or injured
+- Providing help with child or dependent care
+- Providing emotional support
+
+The key predictor of interest is perceived fitness interdependence, particularly
+the shared fate component of the scale. We focused on the neighbourhood level
+rather than the country level in order to match the helping items. This is a 
+composite variable of three items measured on a 1-7 Likert scale at all time 
+points. The individual items are:
+
+- I feel that my neighborhood's gains are my gains
+- What is good for my neighborhood is good for me
+- My neighborhood and I rise and fall together
+
+As additional control variables, we include:
+
+- the amount of help received (similar items as above but receiving instead of 
+  giving; 1-5 Likert scale; measured at all time points except time points 14, 
+  16, and 17)
+- wealth (composite of income, savings, and assets; measured at first time point)
+- trait empathic concern (composite of six items; 1-5 Likert scale; measured at 
+  first time point)
+
+We did not include personality measures (e.g., agreeableness) as there was too
+much missing data.
+  
+# Data visualisation
+
+We can plot averages of helping behaviour and perceived fitness interdependence
+over the course of the study period.
+
+```{r plotHelp, echo = FALSE, out.width="80%"}
+tar_read(plotHelp)
+```
+
+```{r plotPFI, echo = FALSE, out.width="80%"}
+tar_read(plotPFI)
+```
+
+# Longitudinal modelling
+
+We use random-intercept cross-lagged panel modelling to estimate the longitudinal
+causal effect of perceived fitness interdependence on helping behaviour. This 
+model asks whether increases above average levels of the predictor variable
+predict future increases above average levels of the outcome variable at the next
+time point.
+
+## Model without controls
+
+Initially, we include only perceived fitness interdependence and helping behaviour,
+without any additional controls. We include these variables at all time points
+except 14, 16, and 17, because helping behaviour was not measured at those time 
+points.
+
+```{r riclpm1, echo = FALSE}
+tar_load(c(riclpm1.1, riclpm1.2))
+s1.1 <- standardizedSolution(riclpm1.1)
+s1.2 <- standardizedSolution(riclpm1.2)
+p1.1 <- parameterEstimates(riclpm1.1)
+p1.2 <- parameterEstimates(riclpm1.2)
+```
+
+We first fit a constrained model, which assumes that the autoregressive and
+cross-lagged effects are identical across waves. This model finds that
+within-person increases in perceived fitness interdependence predict future
+within-person increases in the same variable
+($\beta$ = `r printnum(s1.1[s1.1$lhs=="w1_02" & s1.1$op=="~" & s1.1$rhs=="w1_01","est.std"])`,
+b = `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","est"])`,
+95% CI [`r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.lower"])`
+ `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.upper"])`],
+_p_ `r printp(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","pvalue"])`).
+Within-person increases in helping behaviour also predict future within-person 
+increases in the same variable 
+($\beta$ = `r printnum(s1.1[s1.1$lhs=="w2_02" & s1.1$op=="~" & s1.1$rhs=="w2_01","est.std"])`,
+b = `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","est"])`,
+95% CI [`r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.lower"])`
+ `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.upper"])`],
+_p_ `r printp(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","pvalue"])`).
+However, there were no cross-lagged effects: perceived fitness interdependence 
+did not predict future helping behaviour
+($\beta$ = `r printnum(s1.1[s1.1$lhs=="w2_02" & s1.1$op=="~" & s1.1$rhs=="w1_01","est.std"])`,
+b = `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","est"])`,
+95% CI [`r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.lower"])`
+ `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.upper"])`],
+_p_ = `r printp(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","pvalue"])`)
+nor did helping behaviour predict future perceived fitness interdependence
+($\beta$ = `r printnum(s1.1[s1.1$lhs=="w1_02" & s1.1$op=="~" & s1.1$rhs=="w2_01","est.std"])`,
+b = `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","est"])`,
+95% CI [`r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.lower"])`
+ `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.upper"])`],
+_p_ = `r printp(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","pvalue"])`).
