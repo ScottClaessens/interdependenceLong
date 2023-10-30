@@ -21,6 +21,9 @@ list(
   # fit random intercept cross-lagged panel model without controls
   tar_target(riclpm1.1, fitRICLPM1(d, constrained = TRUE)),
   tar_target(riclpm1.2, fitRICLPM1(d, constrained = FALSE)),
+  # fit random intercept cross-lagged panel model with controls
+  tar_target(riclpm2.1, fitRICLPM2(d, constrained = TRUE)),
+  tar_target(riclpm2.2, fitRICLPM2(d, constrained = FALSE)),
   # print session info for reproducibility
   tar_target(sessionInfo, writeLines(capture.output(sessionInfo()), "sessionInfo.txt"))
 )
