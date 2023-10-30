@@ -5,13 +5,16 @@ fitRICLPM|function|7cadd9f944a75401|||||||||||||||
 fitRICLPM1|function|476aeba78a3ce0ec|||||||||||||||
 fitRICLPM2|function|454272aeda3de8ea|||||||||||||||
 loadData|function|577af9533fa9e459|||||||||||||||
+plot1.2|stem|ee5e61d3ef616b2d|24eab375c7007d6d|12df61e68c3d14aa|1802793181||t19660.9933182041s|7e162dc207913859|383167|rds|local|vector|||1.1||
+plot2.2|stem|f5b81500c06fc1e1|15b2191a2e72db96|63b4ce0e9072ae5e|-2095856902||t19660.9933781926s|ec222a30528a39c0|1381327|rds|local|vector|||5.02||
 plotHelp|stem|55cee2d06b736751|85f0cbe121bd2e3e|f8d4f3453fb5f705|-1243343198||t19656.1697246571s|4d16e1c5004ce966|137214|rds|local|vector|||0.44||
 plotHelping|function|c71ace2e653f0fbe|||||||||||||||
 plotMissing|stem|4eb2aa6c9d8dd85c|3d81c52d5242f976|1bcd5e6b490561c6|-20879220||t19656.1693707695s|c0bd8ea54364490f|144241|rds|local|vector|||0.49||
 plotMissingness|function|2c4a4cf3a6a36b7d|||||||||||||||
 plotPerceivedInterdependence|function|926b82de3d20ec73|||||||||||||||
 plotPFI|stem|94074f4a8469e7bb|9c8a5bcf8b22d87f|a8cdc0e1f10da1f0|1601422046||t19656.1697280022s|a34a27dfedbdb818|137445|rds|local|vector|||0.22||
-report|stem|7e8a63893f9dde41|c1da4fdf57b181f8|77865d9eac5a8fc7|-237041703|report.pdf*report.Rmd|t19660.9574744889s|a556bd118341a9d8|146203|file|local|vector|||4.24||
+plotUnconstrained|function|025ad723a1d81a07|||||||||||||||
+report|stem|1824f74e84a57424|b9a3d94138415bbf|97654630f82051a7|-237041703|report.pdf*report.Rmd|t19660.9962881525s|5de8f7153ff38647|153237|file|local|vector|||5.66||
 riclpm|stem|48f5655cdc192189|20ac0092282c688a|52590568b01c7da7|579662188||t19656.1891195965s|d0f3421853e547c0|322335|rds|local|vector|||28.44||
 riclpm1.1|stem|a85dcd08c1a38f21|c86518501156ace0|d4df133c4084beff|1666398390||t19660.8555150609s|c200cad93e9ff7b0|322346|rds|local|vector|||29.55||
 riclpm1.2|stem|4c54b92c68188e0a|58571875171e539a|d4df133c4084beff|836228540||t19660.855848453s|bea683843278504b|305292|rds|local|vector|||28.75||

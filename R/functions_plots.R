@@ -103,3 +103,36 @@ plotHelping <- function(d) {
   ggsave(filename = "figures/help.pdf", width = 7, height = 4)
   return(out)
 }
+
+# plot unconstrained model parameters
+plotUnconstrained <- function(riclpm, filename) {
+  out <-
+    # get standardised parameters
+    standardizedSolution(riclpm) %>%
+    as_tibble() %>%
+    # get only cross-lagged effects
+    filter(
+      ((str_starts(lhs, "w1_") & str_starts(rhs, "w2_")) |
+       (str_starts(lhs, "w2_") & str_starts(rhs, "w1_"))) &
+        op == "~"
+      ) %>%
+    # wrangle for plot
+    separate(rhs, into = c("rhs", "time"), sep = "_") %>%
+    mutate(
+      `Time point` = parse_number(time),
+      `Cross-lagged parameter` = 
+        factor(ifelse(rhs == "w1", "PFI -> Helping", "Helping -> PFI"), 
+               levels = c("PFI -> Helping", "Helping -> PFI")),
+      `Standardised estimate` = est.std
+      ) %>%
+    # plot
+    ggplot(aes(x = `Time point`, y = `Standardised estimate`, ymin = ci.lower, 
+               ymax = ci.upper, colour = `Cross-lagged parameter`)) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    geom_pointrange(position = position_dodge(width = 0.5)) +
+    scale_x_continuous(breaks = 1:15) +
+    theme_classic()
+  # save
+  ggsave(out, filename = filename, width = 7, height = 4)
+  return(out)
+}

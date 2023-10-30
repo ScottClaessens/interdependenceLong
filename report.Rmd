@@ -10,7 +10,7 @@ perceived fitness interdependence on helping behaviour.
 
 # Sample
 
-We test the longitudinal relationship between perceived fitness interdependence
+We tested the longitudinal relationship between perceived fitness interdependence
 and helping behaviour in a sample of `r nrow(tar_read(d))` participants from the
 United States, sampled over 18 time points between 2020 and 2022.
 
@@ -64,7 +64,7 @@ tar_read(plotPFI)
 
 # Longitudinal modelling
 
-We use random-intercept cross-lagged panel modelling to estimate the longitudinal
+We used random-intercept cross-lagged panel modelling to estimate the longitudinal
 causal effect of perceived fitness interdependence on helping behaviour. This 
 model asks whether increases above average levels of the predictor variable
 predict future increases above average levels of the outcome variable at the next
@@ -72,8 +72,8 @@ time point.
 
 ## Model without controls
 
-Initially, we include only perceived fitness interdependence and helping behaviour,
-without any additional controls. We include these variables at all time points
+Initially, we included only perceived fitness interdependence and helping behaviour,
+without any additional controls. We included these variables at all time points
 except 14, 16, and 17, because helping behaviour was not measured at those time 
 points.
 
@@ -85,16 +85,16 @@ p1.1 <- parameterEstimates(riclpm1.1)
 p1.2 <- parameterEstimates(riclpm1.2)
 ```
 
-We first fit a constrained model, which assumes that the autoregressive and
-cross-lagged effects are identical across waves. This model finds that
-within-person increases in perceived fitness interdependence predict future
+We first fitted a constrained model, which assumes that the autoregressive and
+cross-lagged effects are identical across waves. This model found that
+within-person increases in perceived fitness interdependence predicted future
 within-person increases in the same variable
 ($\beta$ = `r printnum(s1.1[s1.1$lhs=="w1_02" & s1.1$op=="~" & s1.1$rhs=="w1_01","est.std"])`,
 b = `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","est"])`,
 95% CI [`r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.lower"])`
  `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.upper"])`],
 _p_ `r printp(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","pvalue"])`).
-Within-person increases in helping behaviour also predict future within-person 
+Within-person increases in helping behaviour also predicted future within-person 
 increases in the same variable 
 ($\beta$ = `r printnum(s1.1[s1.1$lhs=="w2_02" & s1.1$op=="~" & s1.1$rhs=="w2_01","est.std"])`,
 b = `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","est"])`,
@@ -114,3 +114,13 @@ b = `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","est"]
 95% CI [`r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.lower"])`
  `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.upper"])`],
 _p_ = `r printp(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","pvalue"])`).
+
+We then fitted an unconstrained model that estimated different autoregressive
+and cross-lagged effects at each time point. This model found only one cross-lagged
+effect across the whole study period, from helping behaviour to future
+perceived fitness interdependence in time point 6. There were no cross-lagged
+effects from interdependence to future helping behaviour.
+
+```{r plot1.2, echo = FALSE}
+tar_read(plot1.2)
+```

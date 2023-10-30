@@ -24,6 +24,9 @@ list(
   # fit random intercept cross-lagged panel model with controls
   tar_target(riclpm2.1, fitRICLPM2(d, constrained = TRUE)),
   tar_target(riclpm2.2, fitRICLPM2(d, constrained = FALSE)),
+  # plot unconstrained model parameters
+  tar_target(plot1.2, plotUnconstrained(riclpm1.2, filename = "figures/riclpm1.2.pdf")),
+  tar_target(plot2.2, plotUnconstrained(riclpm2.2, filename = "figures/riclpm2.2.pdf")),
   # knit report
   tar_render(report, "report.Rmd"),
   # print session info for reproducibility
