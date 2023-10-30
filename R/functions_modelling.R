@@ -1,6 +1,7 @@
 # custom functions
 
-fitRICLPM <- function(d, constrained = FALSE) {
+# model without controls
+fitRICLPM1 <- function(d, constrained = FALSE) {
   # model code for riclpm
   # https://jeroendmulder.github.io/RI-CLPM/lavaan.html
   model <- '# Create between components (random intercepts)
@@ -133,11 +134,7 @@ fitRICLPM <- function(d, constrained = FALSE) {
             HelpGiven.1 + HelpGiven.2 + HelpGiven.3 + HelpGiven.4 + HelpGiven.5 + HelpGiven.6 + HelpGiven.7 + HelpGiven.8 + HelpGiven.9 + HelpGiven.10 + HelpGiven.11 + HelpGiven.12 + HelpGiven.13 + HelpGiven.15 + HelpGiven.18 ~ 1'
   # remove constraints for unconstrained model
   if (!constrained) {
-    constraints <- c("b11","b12","b13",
-                     "b21","b22","b23",
-                     "b31","b32","b33",
-                     "cov12","cov13","cov23",
-                     "var1","var2","var3")
+    constraints <- c("b11","b12","b21","b22","cov12","var1","var2")
     for (i in constraints) model <- str_replace_all(model, fixed(paste0(i, "*")), "")
   }
   # fit model

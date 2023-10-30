@@ -19,7 +19,8 @@ list(
   # plot average help given/received over time
   tar_target(plotHelp, plotHelping(d)),
   # fit random intercept cross-lagged panel model without controls
-  tar_target(riclpm, fitRICLPM(d, constrained = TRUE)),
+  tar_target(riclpm1.1, fitRICLPM1(d, constrained = TRUE)),
+  tar_target(riclpm1.2, fitRICLPM1(d, constrained = FALSE)),
   # print session info for reproducibility
   tar_target(sessionInfo, writeLines(capture.output(sessionInfo()), "sessionInfo.txt"))
 )

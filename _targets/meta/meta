@@ -2,6 +2,7 @@ name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iterat
 d|stem|8c207ac6895a265d|657a3af1a9391cde|fd97a9771847989a|592496261||t19656.1679531104s|43cc871c0c249a3e|65456|rds|local|vector|||5.1||
 fileData|stem|db8ac5903ac363be|1e2565cee40dca55|ef46db3751d8e999|-1990176534|data/usCohortCleanData_t1-t18.csv|t19255.0440162037s|19c03fbd7cdfe9a8|10770912|file|local|vector|||0||
 fitRICLPM|function|7cadd9f944a75401|||||||||||||||
+fitRICLPM1|function|476aeba78a3ce0ec|||||||||||||||
 loadData|function|577af9533fa9e459|||||||||||||||
 plotHelp|stem|55cee2d06b736751|85f0cbe121bd2e3e|f8d4f3453fb5f705|-1243343198||t19656.1697246571s|4d16e1c5004ce966|137214|rds|local|vector|||0.44||
 plotHelping|function|c71ace2e653f0fbe|||||||||||||||
@@ -10,4 +11,6 @@ plotMissingness|function|2c4a4cf3a6a36b7d|||||||||||||||
 plotPerceivedInterdependence|function|926b82de3d20ec73|||||||||||||||
 plotPFI|stem|94074f4a8469e7bb|9c8a5bcf8b22d87f|a8cdc0e1f10da1f0|1601422046||t19656.1697280022s|a34a27dfedbdb818|137445|rds|local|vector|||0.22||
 riclpm|stem|48f5655cdc192189|20ac0092282c688a|52590568b01c7da7|579662188||t19656.1891195965s|d0f3421853e547c0|322335|rds|local|vector|||28.44||
+riclpm1.1|stem|a85dcd08c1a38f21|c86518501156ace0|d4df133c4084beff|1666398390||t19660.8555150609s|c200cad93e9ff7b0|322346|rds|local|vector|||29.55||
+riclpm1.2|stem|4c54b92c68188e0a|58571875171e539a|d4df133c4084beff|836228540||t19660.855848453s|bea683843278504b|305292|rds|local|vector|||28.75||
 sessionInfo|stem|794be3614d98cc38|74c06756c0452f1d|696eeb75af4c39be|-1689045739||t19656.07075566s|a1c456b03adbfbf8|44|rds|local|vector|||0.06||
