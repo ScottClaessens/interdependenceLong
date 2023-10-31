@@ -13,7 +13,7 @@ All data for this project can be found in the `/data` folder. To download the da
 To run this code, you will need to [install R](https://www.r-project.org/) and the following R packages:
 
 ```
-install.packages(c())
+install.packages(c("lavaan", "papaja", "tarchetypes", "targets", "tidyverse"))
 ```
 
 ### Executing code
