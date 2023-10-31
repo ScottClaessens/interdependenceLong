@@ -124,3 +124,54 @@ effects from interdependence to future helping behaviour.
 ```{r plot1.2, echo = FALSE}
 tar_read(plot1.2)
 ```
+
+## Model including controls
+
+In a second set of models, we included several time-varying and time-invariant
+covariates to control for confounding. We added amount of help received as a
+time-varying covariate. We also added wealth and trait empathic concern as
+time-invariant covariates.
+
+```{r riclpm2, echo = FALSE}
+tar_load(c(riclpm2.1, riclpm2.2))
+s2.1 <- standardizedSolution(riclpm2.1)
+s2.2 <- standardizedSolution(riclpm2.2)
+p2.1 <- parameterEstimates(riclpm2.1)
+p2.2 <- parameterEstimates(riclpm2.2)
+```
+
+The results of the constrained model with controls were the same as the model
+without controls. This model found that within-person increases in perceived 
+fitness interdependence predicted future within-person increases in the same variable
+($\beta$ = `r printnum(s2.1[s2.1$lhs=="w1_02" & s2.1$op=="~" & s2.1$rhs=="w1_01","est.std"])`,
+b = `r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","est"])`,
+95% CI [`r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","ci.lower"])`
+ `r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","ci.upper"])`],
+_p_ `r printp(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","pvalue"])`).
+Within-person increases in helping behaviour also predicted future within-person 
+increases in the same variable 
+($\beta$ = `r printnum(s2.1[s2.1$lhs=="w2_02" & s2.1$op=="~" & s2.1$rhs=="w2_01","est.std"])`,
+b = `r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","est"])`,
+95% CI [`r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","ci.lower"])`
+ `r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","ci.upper"])`],
+_p_ `r printp(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","pvalue"])`).
+However, there were no cross-lagged effects: perceived fitness interdependence 
+did not predict future helping behaviour
+($\beta$ = `r printnum(s2.1[s2.1$lhs=="w2_02" & s2.1$op=="~" & s2.1$rhs=="w1_01","est.std"])`,
+b = `r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","est"])`,
+95% CI [`r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","ci.lower"])`
+ `r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","ci.upper"])`],
+_p_ = `r printp(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","pvalue"])`)
+nor did helping behaviour predict future perceived fitness interdependence
+($\beta$ = `r printnum(s2.1[s2.1$lhs=="w1_02" & s2.1$op=="~" & s2.1$rhs=="w2_01","est.std"])`,
+b = `r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","est"])`,
+95% CI [`r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","ci.lower"])`
+ `r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","ci.upper"])`],
+_p_ = `r printp(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","pvalue"])`).
+
+Results from the unconstrained were also unchanged, finding no cross-lagged
+effects from interdependence to future helping behaviour.
+
+```{r plot2.2, echo = FALSE}
+tar_read(plot2.2)
+```
