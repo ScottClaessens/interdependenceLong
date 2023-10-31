@@ -86,9 +86,19 @@ p1.2 <- parameterEstimates(riclpm1.2)
 ```
 
 We first fitted a constrained model, which assumes that the autoregressive and
-cross-lagged effects are identical across waves. This model found that
-within-person increases in perceived fitness interdependence predicted future
-within-person increases in the same variable
+cross-lagged effects are identical across waves. The covariance between random 
+intercepts in this model revealed that perceived fitness interdependence and 
+helping behaviour were positively correlated on average
+(_r_ = `r printnum(s1.1[s1.1$lhs == "ri1" & s1.1$op == "~~" & s1.1$rhs == "ri2","est.std"])`,
+95% CI [`r printnum(s1.1[s1.1$lhs == "ri1" & s1.1$op == "~~" & s1.1$rhs == "ri2","ci.lower"])`
+ `r printnum(s1.1[s1.1$lhs == "ri1" & s1.1$op == "~~" & s1.1$rhs == "ri2","ci.upper"])`],
+_p_ `r printp(s1.1[s1.1$lhs == "ri1" & s1.1$op == "~~" & s1.1$rhs == "ri2","pvalue"])`). 
+Across all time points, participants who generally perceived themselves to be 
+interdependent with others were also more likely to provide help to others. 
+
+Regarding the longitudinal effects from the model, within-person increases in 
+perceived fitness interdependence predicted future within-person increases in 
+the same variable
 ($\beta$ = `r printnum(s1.1[s1.1$lhs=="w1_02" & s1.1$op=="~" & s1.1$rhs=="w1_01","est.std"])`,
 b = `r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","est"])`,
 95% CI [`r printnum(p1.1[p1.1$lhs=="w1_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.lower"])`
@@ -101,8 +111,8 @@ b = `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","est"]
 95% CI [`r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.lower"])`
  `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","ci.upper"])`],
 _p_ `r printp(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w2_01","pvalue"])`).
-However, there were no cross-lagged effects: perceived fitness interdependence 
-did not predict future helping behaviour
+However, there were no cross-lagged effects over time: perceived fitness 
+interdependence did not predict future helping behaviour
 ($\beta$ = `r printnum(s1.1[s1.1$lhs=="w2_02" & s1.1$op=="~" & s1.1$rhs=="w1_01","est.std"])`,
 b = `r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","est"])`,
 95% CI [`r printnum(p1.1[p1.1$lhs=="w2_02" & p1.1$op=="~" & p1.1$rhs=="w1_01","ci.lower"])`
@@ -121,7 +131,7 @@ effect across the whole study period, from helping behaviour to future
 perceived fitness interdependence in time point 6. There were no cross-lagged
 effects from interdependence to future helping behaviour.
 
-```{r plot1.2, echo = FALSE}
+```{r plot1.2, echo = FALSE, fig.height = 3.5}
 tar_read(plot1.2)
 ```
 
@@ -141,7 +151,17 @@ p2.2 <- parameterEstimates(riclpm2.2)
 ```
 
 The results of the constrained model with controls were the same as the model
-without controls. This model found that within-person increases in perceived 
+without controls. As before, the covariance between random intercepts in this 
+model revealed that perceived fitness interdependence and helping behaviour were 
+positively correlated on average
+(_r_ = `r printnum(s2.1[s2.1$lhs == "ri1" & s2.1$op == "~~" & s2.1$rhs == "ri2","est.std"])`,
+95% CI [`r printnum(s2.1[s2.1$lhs == "ri1" & s2.1$op == "~~" & s2.1$rhs == "ri2","ci.lower"])`
+ `r printnum(s2.1[s2.1$lhs == "ri1" & s2.1$op == "~~" & s2.1$rhs == "ri2","ci.upper"])`],
+_p_ `r printp(s2.1[s2.1$lhs == "ri1" & s2.1$op == "~~" & s2.1$rhs == "ri2","pvalue"])`). 
+Across all time points, participants who generally perceived themselves to be 
+interdependent with others were also more likely to provide help to others.
+
+Regarding the longitudinal effects from the model, within-person increases in perceived 
 fitness interdependence predicted future within-person increases in the same variable
 ($\beta$ = `r printnum(s2.1[s2.1$lhs=="w1_02" & s2.1$op=="~" & s2.1$rhs=="w1_01","est.std"])`,
 b = `r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","est"])`,
@@ -155,8 +175,8 @@ b = `r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","est"]
 95% CI [`r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","ci.lower"])`
  `r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","ci.upper"])`],
 _p_ `r printp(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","pvalue"])`).
-However, there were no cross-lagged effects: perceived fitness interdependence 
-did not predict future helping behaviour
+However, there were no cross-lagged effects over time: perceived fitness 
+interdependence did not predict future helping behaviour
 ($\beta$ = `r printnum(s2.1[s2.1$lhs=="w2_02" & s2.1$op=="~" & s2.1$rhs=="w1_01","est.std"])`,
 b = `r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","est"])`,
 95% CI [`r printnum(p2.1[p2.1$lhs=="w2_02" & p2.1$op=="~" & p2.1$rhs=="w1_01","ci.lower"])`
@@ -169,9 +189,9 @@ b = `r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","est"]
  `r printnum(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","ci.upper"])`],
 _p_ = `r printp(p2.1[p2.1$lhs=="w1_02" & p2.1$op=="~" & p2.1$rhs=="w2_01","pvalue"])`).
 
-Results from the unconstrained were also unchanged, finding no cross-lagged
+Results from the unconstrained model were also unchanged, finding no cross-lagged
 effects from interdependence to future helping behaviour.
 
-```{r plot2.2, echo = FALSE}
+```{r plot2.2, echo = FALSE, fig.height = 3.5}
 tar_read(plot2.2)
 ```
